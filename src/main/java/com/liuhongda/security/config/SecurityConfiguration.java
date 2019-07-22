@@ -1,6 +1,7 @@
 package com.liuhongda.security.config;
 
 import com.liuhongda.security.component.MyUserDetailsService;
+import com.liuhongda.security.handler.MyAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
