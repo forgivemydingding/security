@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 /**
  * @author by liu.hongda
  * @Description TODO
@@ -21,5 +23,5 @@ public class SysUser {
     private String username;
     private String password;
 
-
+    private List<SysPermission> sysPermissions;
 }
