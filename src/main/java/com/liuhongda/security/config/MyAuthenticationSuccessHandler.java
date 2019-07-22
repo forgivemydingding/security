@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  * @author by liu.hongda
- * @Description TODO
+ * @Description 登录成功后处理的逻辑，默认是重定向到上一个url，也可以在这里自定义自己的逻辑。
  * @Date 2019/7/22 16:07
  */
 

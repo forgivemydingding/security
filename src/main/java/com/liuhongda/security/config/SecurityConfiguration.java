@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //配置需要认证的请求
         http.csrf().disable().authorizeRequests().anyRequest().authenticated().and()
-                //登录表单相关配置
+                //登录表单相关配置,这里做了successHandler成功登录后的重定向，若不配置则返回上一页面
                 .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password").successHandler(myAuthenticationSuccessHandler).failureUrl("/login?error").permitAll().and()
                 //登出相关配置
                 .logout().permitAll();
@@ -44,11 +44,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(myUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    /**
+     * 默认路径配置
+     * @param web
+     */
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/");
+        web.ignoring().antMatchers("/**");
     }
 
+    /**
+     * 密码加密
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
