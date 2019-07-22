@@ -39,18 +39,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().permitAll();
     }
 
+    /**
+     * 密码翻译
+     * @param auth
+     * @throws Exception
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     /**
-     * 默认路径配置
+     * 默认忽略路径配置
      * @param web
      */
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/**");
+        web.ignoring().antMatchers("/static/**");
     }
 
     /**
