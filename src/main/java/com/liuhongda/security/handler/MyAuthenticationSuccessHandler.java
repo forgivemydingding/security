@@ -28,6 +28,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         log.info("login successful {}",objectMapper.writeValueAsString(authentication));
+        System.out.println("进入重定向");
         httpServletResponse.sendRedirect("/index");
     }
 }

@@ -2,6 +2,7 @@ package com.liuhongda.security.component;
 
 import com.liuhongda.security.model.SysPermission;
 import com.liuhongda.security.model.SysUser;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,11 +31,13 @@ public class MyUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
-
+        System.out.println("进入UserDetailsService");
         return new User(user.getUsername(), user.getPassword(), user.getSysPermissions());
     }
 
+
+
     public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("123456"));
+        System.out.println(new BCryptPasswordEncoder().encode("12345678"));
     }
 }
