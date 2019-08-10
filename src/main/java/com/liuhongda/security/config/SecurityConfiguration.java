@@ -53,7 +53,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .successHandler(savedRequestAwareAuthenticationSuccessHandler()).permitAll()
                 .and()
                 //登出相关配置
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                //设置单人登录
+                .sessionManagement().sessionAuthenticationErrorUrl("").maximumSessions(1);
 
     }
 
